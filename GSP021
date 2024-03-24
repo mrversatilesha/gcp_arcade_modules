@@ -1,0 +1,17 @@
+Step 1 --> Open the cloud console in private window and login with your credentials.
+Step 2 --> Activate the cloud console and type the below code in the console -
+----------------------------------------------------------------------------------
+export ZONE=
+------------------------------------------------------------------------------------
+Step 3 --> Now after the ZONE=, go the lab page and scroll down to the "Google Kubernities Engine" which is in the "Setup and Requirements" section.
+Step 4 --> Paste the zone in the above code after the equal to and press enter.
+Step 5 --> Now paste this code in the cloud shell -
+-----------------------------------------------------------------------------------
+curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/Orchestrating%20the%20Cloud%20with%20Kubernetes/gsp021.sh
+
+sudo chmod +x gsp021.sh
+
+./gsp021.sh
+-----------------------------------------------------------------------------------
+Step 6 --> Press Enter and Click Authorize. Wait for the command to be executed.
+Step 7 --> Now do all the check my progress and hence the lab is completed.
