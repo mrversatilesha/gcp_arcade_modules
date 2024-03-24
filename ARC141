@@ -1,0 +1,11 @@
+Step 1 --> Open the cloud console in private window and login with your credentials.
+Step 2 --> Activate the cloud console and type the below code int the console -
+----------------------------------------------------------------------------------
+
+gcloud compute --project=$DEVSHELL_PROJECT_ID firewall-rules create default-allow-outbound --direction=EGRESS --priority=1000 --network=default --action=ALLOW --rules=tcp:80 --source-ranges=0.0.0.0/0 --target-tags=staging-vm
+
+------------------------------------------------------------------------------------
+Step 3 --> Press Enter.
+Step 4 --> The lab has no check my progress, so just to the home page of the cloud skills catalog section - https://www.cloudskillsboost.google/catalog
+Step 5 --> In the search bar , type "Arcade Hero: Enter the Outbound Firewall" and hit enter
+Step 6 --> Click on the lab and there you can see the check my progress and hence the lab is completed.
