@@ -1,1 +1,19 @@
+Step 1 --> Open the cloud console in private window and login with your credentials.
+Step 2 --> In the search bar, type API and services in a new tab.
+Step 3 --> Click on the credentials in the left pane 
+Step 4 --> click on "+Create credentials" --> API key-->wait it load-->and then copy that api key.
+Step 5 --> Search for VM instances and click on it
+Step 6 --> The VM window will appear, click on teh SSH and a vm would appear. Clcik on authorize
+Step 7 --> type the below code int the console -
+----------------------------------------------------------------------------------
+export API_KEY=
 
+curl -LO raw.githubusercontent.com/quiccklabs/Labs_solutions/master/Google%20Cloud%20Speech%20to%20Text%20API%20Qwik%20Start/quicklabgsp119.sh
+
+sudo chmod +x quicklabgsp119.sh
+
+./quicklabgsp119.sh
+------------------------------------------------------------------------------------
+Step 8 --> Paste the API key after the equal to in te above code and Press Enter.
+Step 9 --> Now the check all the progress.
+Step 10 --> hence the lab is completed.
