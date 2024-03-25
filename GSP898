@@ -1,0 +1,16 @@
+Step 1 --> Open the cloud console in private window and login with your credentials.
+Step 2 --> Activate the cloud console and type the below code in the console -
+----------------------------------------------------------------------------------
+
+export ZONE=
+
+
+curl -LO raw.githubusercontent.com/quiccklabs/Labs_solutions/master/Deploy%20and%20Test%20a%20Visual%20Inspection%20AI%20Cosmetic%20Anomaly%20Detection%20Solution/quicklabgsp898.sh
+
+sudo chmod +x quicklabgsp898.sh
+
+./quicklabgsp898.sh
+------------------------------------------------------------------------------------
+Step 3 --> Now in this after the REGION=, go the task 1 and from there copy the zone from there and paste it after the zone and hit enter
+Step 4 --> Press Enter and Click Authorize. Wait for it execute.
+Step 5 --> Once the code is executed, check all the progress and hence the lab is completed.
