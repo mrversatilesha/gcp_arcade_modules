@@ -1,0 +1,145 @@
+Step 1 --> Open the looker console and login wih your credentials.
+Step 2 --> Activate the development mode by the toggel switch in the left bottom corner.
+Step 3 --> In the left pane, click on Develop--> quicklabs-flights -->general --> flights -->faa.model
+Step 4 --> Now in this file, go to the last of the code and hit enter 5to 6 times and then paste this code - 
+----------------------------------------------------------------------------------
+explore: +flights {
+  query: start_from_here{
+      dimensions: [depart_week, distance_tiered]
+      measures: [count]
+      filters: [flights.depart_date: "2003"]
+    }
+  }
+------------------------------------------------------------------------------------
+Step 5 --> Click on save --> Validate LookML --> and then Commit changes and Push
+Step 6 --> A dialogue box appears, type task1 and hit enter.
+Step 7 --> NOw click on deploy to production.
+Setp 8 --> Again Open the Looker in a new tab in same private window.
+Step 9 --> Click on Explore --> FAA --> Flights.
+Step 10 --> Click on start from here.
+Step 11 --> NOw in the visualization section , click on the line output.
+Step 12 --> Now copy this "Distance Tiered" and and paste it in the search bar on the side panel.
+Step 13 --> Select the option of pivot table option(<-|) whcih would appear on the side of the "Distance Tiered".
+Step 14 --> Click on Run.  Wait for it to load.
+Step 15 --> Now in the edit option, go to the Legend align and click on left.
+Step 16 --> Click on teh gear icon near the RUN button and click on save --> as a look
+Step 17 --> for the new window , paste this in the title - "Flight Count by Departure Week and Distance Tier"
+Step 18 --> Click on Save
+Step 19 --> Go to the lab and check the progress of the task 1. it would be done, now for task 2.
+step 20 --> Copy this - 
+----------------------------------------------------------------------------------
+explore: +flights {
+  query: start_from_here{
+      dimensions: [aircraft_origin.state]
+      measures: [percent_cancelled]
+      filters: [flights.depart_date: "2000"]
+    }
+  }
+------------------------------------------------------------------------------------
+Step 21 --> Paste it insated of the firstly copied command in the task1 , in the faa.model code menu.
+Step 22 --> Click on save --> Validate LookML --> and then Commit changes and Push
+Step 23 --> A dialogue box appears, type task2 and hit enter.
+Step 24 --> NOw click on deploy to production.
+Step 25 --> Again Open the Looker in a new tab in same private window.
+Step 26 --> Click on Explore --> FAA --> Flights.
+Step 27 --> Click on start from here.
+Step 28 --> NOw in the visualization section , click on the line output.
+Step 29 --> Now copy this "Percent of Flights Cancelled by State in 2000" and and paste it in the search bar on the side panel.
+Step 30 --> Click on teh gear icon near the RUN button and click on save --> as a look
+Step 31 --> for the new window , paste this in the title - "Percent of Flights Cancelled by State in 2000"
+Step 32 --> Click on Save
+Step 33 --> Go to the lab and check the progress of the task 1. it would be done, now for task 2.
+step 34 --> Copy this - 
+----------------------------------------------------------------------------------
+explore: +flights {
+    query: start_from_here{
+      dimensions: [aircraft_origin.state]
+      measures: [cancelled_count, count]
+      filters: [flights.depart_date: "2004"]
+    }
+}
+
+------------------------------------------------------------------------------------
+Step 35 --> Paste it insated of the firstly copied command in the task2 , in the faa.model code menu.
+Step 36 --> Click on save --> Validate LookML --> and then Commit changes and Push
+Step 37 --> A dialogue box appears, type task3 and hit enter.
+Step 38 --> NOw click on deploy to production. 
+Step 39 --> Again Open the Looker in a new tab in same private window.
+Step 40 --> Click on Explore --> FAA --> Flights.
+Step 41 --> Click on start from here.
+Step 42 --> Now copy this formula 
+-------------------------------------------------------------------------------------
+${flights.cancelled_count}/${flights.count}
+-------------------------------------------------------------------------------------
+Step 43 --> Click on the "+" which is infornt of the custom fields --> Table calculation
+Step 44 --> and paste the avove copied formula in the expression window.
+Step 45 --> int the format --> click on percent and -->save
+Step 46 --> Copy this name -"Percent of Flights Cancelled by Aircraft Origin 2004".
+Step 47 --> Click on teh gear icon near the RUN button and click on save --> as a look
+Step 48 --> for the new window , paste this in the title - "Percent of Flights Cancelled by Aircraft Origin 2004"
+Step 49 --> Click on Save
+Step 50 --> Go to the lab and check the progress of the task 3. it would be done, now for task 4.
+Step 50 --> Copy this command - 
+----------------------------------------------------------------------------------------
+explore: +flights {
+    query: start_from_here{
+      dimensions: [carriers.name]
+      measures: [total_distance]
+    }
+}
+----------------------------------------------------------------------------------------
+Step 51 --> Paste it insated of the firstly copied command in the task1 , in the faa.model code menu.
+Step 52 --> Click on save --> Validate LookML --> and then Commit changes and Push
+Step 53 --> A dialogue box appears, type task4 and hit enter.
+Step 54 --> NOw click on deploy to production.
+Step 55 --> Again Open the Looker in a new tab in same private window.
+Step 56 --> Click on Explore --> FAA --> Flights.
+Step 57 --> Click on start from here.
+Step 58 --> There is a check box in the right most side where total is written, click on it to chekc it and then
+Step 59 --> Now copy this formula 
+-------------------------------------------------------------------------------------
+${flights.total_distance}/${flights.total_distance:total}
+-------------------------------------------------------------------------------------
+Step 60 --> Click on the "+" which is infornt of the custom fields --> Table calculation
+Step 61 --> and paste the avove copied formula in the expression window.
+Step 62 --> int the format --> click on percent and -->save
+Step 63 -->  NOw in the visualization section , click on the bar output.
+Step 64 --> Click on teh gear icon near the RUN button and click on save --> as a look
+Step 65 --> for the new window , paste this in the title - "Percent of Total Distance Flown by Carrier"
+Step 66 --> Click on Save
+Step 67 --> Go to the lab and check the progress of the task 4. it would be done, now for task 5.
+Step 68 --> copy this command -
+---------------------------------------------------------------------------------------
+# Place in `faa` model
+explore: +flights {
+    query:start_from_here {
+      dimensions: [depart_year, distance_tiered]
+      measures: [count]
+      filters: [flights.depart_date: "after 2000/01/01"]
+    }
+}
+------------------------------------------------------------------------------------------
+Step 69 --> Paste it insated of the firstly copied command in the task1 , in the faa.model code menu.
+Step 70 --> Click on save --> Validate LookML --> and then Commit changes and Push
+Step 71 --> A dialogue box appears, type task4 and hit enter.
+Step 72 --> NOw click on deploy to production.
+Step 73 --> Again Open the Looker in a new tab in same private window.
+Step 74 --> Click on Explore --> FAA --> Flights.
+Step 75 --> Click on start from here.
+Step 76 --> copy this formula -
+----------------------------------------------------------------------------------
+(${flights.count}-pivot_offset(${flights.count}, -1))/pivot_offset(${flights.count}, -1)
+---------------------------------------------------------------------------------------
+Step 77 --> Click on the "+" which is infornt of the custom fields --> Table calculation
+Step 78 --> and paste the above copied formula in the expression window.
+Step 79 --> int the format --> click on percent and -->save
+Step 80 --> NOw in the visualization section , click on the table output.
+Step 81 --> Click on flights in the all fields --> depart date --> in front of the year , there is a sign of pivot table,, click on that sign
+Step 82 --> click on run 
+Step 83 --> Click on the edit option below the run, click on formatting --> scrolll down --> and click on the option of enable conditional formatting --> click on add a rule
+Step 84 --> Click on teh gear icon near the RUN button and click on save --> as a look
+Step 85 --> for the new window , paste this in the title - "YoY Percent Change in Flights flown by Distance, 2000-Present"
+Step 86 --> Click on Save
+
+Hence the lab is completed
+
