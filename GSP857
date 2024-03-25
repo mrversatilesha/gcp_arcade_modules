@@ -44,11 +44,11 @@ Step 25 --> Again Open the Looker in a new tab in same private window.
 Step 26 --> Click on Explore --> FAA --> Flights.
 Step 27 --> Click on start from here.
 Step 28 --> NOw in the visualization section , click on the line output.
-Step 29 --> Now copy this "Percent of Flights Cancelled by State in 2000" and and paste it in the search bar on the side panel.
+
 Step 30 --> Click on teh gear icon near the RUN button and click on save --> as a look
 Step 31 --> for the new window , paste this in the title - "Percent of Flights Cancelled by State in 2000"
 Step 32 --> Click on Save
-Step 33 --> Go to the lab and check the progress of the task 1. it would be done, now for task 2.
+Step 33 --> Go to the lab and check the progress of the task 2. it would be done, now for task 3.
 step 34 --> Copy this - 
 ----------------------------------------------------------------------------------
 explore: +flights {
