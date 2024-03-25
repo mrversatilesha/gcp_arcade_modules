@@ -1,0 +1,167 @@
+Step 1 --> Open the cloud console in private window and login with your credentials.
+Step 2 --> Activate the cloud console and copy paste this command and click on Authorize
+
+---------------------------------------------------------------------------------------------
+gcloud auth list
+---------------------------------------------------------------------------------------------
+
+Step 3 --> copy paste this command - 
+
+---------------------------------------------------------------------------------------------
+gcloud config list project
+---------------------------------------------------------------------------------------------
+
+Step 4 --> From the side panel, hover over API and Services and then click on Library
+Step 5 --> Type - Service NEtworking API in the search 
+Step 6 --> Click on that and Enable it --> click on manage
+Step 7 --> FRom the side panel hover on Compute Engine --> click on VM instances
+Step 8 --> The menu appear --> click on the SSH , a new VM window would appear and will connect so wait
+Step 9 --> Now Copy thsi code and paste it in the VM console
+
+------------------------------------------------------------------------------------
+sudo apt install postgresql-13-pglogical
+------------------------------------------------------------------------------------
+
+Step 10 --> once it is done, copy this and paste there and hit enter
+
+--------------------------------------------------------------------------------
+sudo su - postgres -c "gsutil cp gs://cloud-training/gsp918/pg_hba_append.conf ."
+sudo su - postgres -c "gsutil cp gs://cloud-training/gsp918/postgresql_append.conf ."
+sudo su - postgres -c "cat pg_hba_append.conf >> /etc/postgresql/13/main/pg_hba.conf"
+sudo su - postgres -c "cat postgresql_append.conf >> /etc/postgresql/13/main/postgresql.conf"
+
+sudo systemctl restart postgresql@13-main
+--------------------------------------------------------------------------------
+
+Step 11 --> once it is done, copy this and paste there and hit enter
+
+--------------------------------------------------------------------------------
+sudo su - postgres
+psql
+--------------------------------------------------------------------------------
+
+Step 12 -->  once it is done, COPY THESE ONE BY ONE and paste there and hit enter
+--------------------------------------------------------------------------------
+\c postgres;
+CREATE EXTENSION pglogical;
+\c orders;
+CREATE EXTENSION pglogical;
+\c gmemegen_db;
+CREATE EXTENSION pglogical;
+\l
+--------------------------------------------------------------------------------
+
+Step 13 --> once it is done, copy this and paste there and hit enter
+--------------------------------------------------------------------------------
+CREATE USER migration_admin PASSWORD 'DMS_1s_cool!';
+ALTER DATABASE orders OWNER TO migration_admin;
+ALTER ROLE migration_admin WITH REPLICATION;
+--------------------------------------------------------------------------------
+Step 14 --> once it is done, copy this and paste there and hit enter
+--------------------------------------------------------------------------------
+\c postgres;
+GRANT USAGE ON SCHEMA pglogical TO migration_admin;
+GRANT ALL ON SCHEMA pglogical TO migration_admin;
+
+GRANT SELECT ON pglogical.tables TO migration_admin;
+GRANT SELECT ON pglogical.depend TO migration_admin;
+GRANT SELECT ON pglogical.local_node TO migration_admin;
+GRANT SELECT ON pglogical.local_sync_status TO migration_admin;
+GRANT SELECT ON pglogical.node TO migration_admin;
+GRANT SELECT ON pglogical.node_interface TO migration_admin;
+GRANT SELECT ON pglogical.queue TO migration_admin;
+GRANT SELECT ON pglogical.replication_set TO migration_admin;
+GRANT SELECT ON pglogical.replication_set_seq TO migration_admin;
+GRANT SELECT ON pglogical.replication_set_table TO migration_admin;
+GRANT SELECT ON pglogical.sequence_state TO migration_admin;
+GRANT SELECT ON pglogical.subscription TO migration_admin;
+--------------------------------------------------------------------------------
+Step 15 --> once it is done, copy this and paste there and hit enter
+--------------------------------------------------------------------------------
+\c orders;
+GRANT USAGE ON SCHEMA pglogical TO migration_admin;
+GRANT ALL ON SCHEMA pglogical TO migration_admin;
+
+GRANT SELECT ON pglogical.tables TO migration_admin;
+GRANT SELECT ON pglogical.depend TO migration_admin;
+GRANT SELECT ON pglogical.local_node TO migration_admin;
+GRANT SELECT ON pglogical.local_sync_status TO migration_admin;
+GRANT SELECT ON pglogical.node TO migration_admin;
+GRANT SELECT ON pglogical.node_interface TO migration_admin;
+GRANT SELECT ON pglogical.queue TO migration_admin;
+GRANT SELECT ON pglogical.replication_set TO migration_admin;
+GRANT SELECT ON pglogical.replication_set_seq TO migration_admin;
+GRANT SELECT ON pglogical.replication_set_table TO migration_admin;
+GRANT SELECT ON pglogical.sequence_state TO migration_admin;
+GRANT SELECT ON pglogical.subscription TO migration_admin;
+--------------------------------------------------------------------------------
+Step 16 --> once it is done, copy this and paste there and hit enter
+--------------------------------------------------------------------------------
+GRANT USAGE ON SCHEMA public TO migration_admin;
+GRANT ALL ON SCHEMA public TO migration_admin;
+
+GRANT SELECT ON public.distribution_centers TO migration_admin;
+GRANT SELECT ON public.inventory_items TO migration_admin;
+GRANT SELECT ON public.order_items TO migration_admin;
+GRANT SELECT ON public.products TO migration_admin;
+GRANT SELECT ON public.users TO migration_admin;
+--------------------------------------------------------------------------------
+Step 17 --> once it is done, copy this and paste there and hit enter
+--------------------------------------------------------------------------------
+\c gmemegen_db;
+
+GRANT USAGE ON SCHEMA pglogical TO migration_admin;
+GRANT ALL ON SCHEMA pglogical TO migration_admin;
+
+GRANT SELECT ON pglogical.tables TO migration_admin;
+GRANT SELECT ON pglogical.depend TO migration_admin;
+GRANT SELECT ON pglogical.local_node TO migration_admin;
+GRANT SELECT ON pglogical.local_sync_status TO migration_admin;
+GRANT SELECT ON pglogical.node TO migration_admin;
+GRANT SELECT ON pglogical.node_interface TO migration_admin;
+GRANT SELECT ON pglogical.queue TO migration_admin;
+GRANT SELECT ON pglogical.replication_set TO migration_admin;
+GRANT SELECT ON pglogical.replication_set_seq TO migration_admin;
+GRANT SELECT ON pglogical.replication_set_table TO migration_admin;
+GRANT SELECT ON pglogical.sequence_state TO migration_admin;
+GRANT SELECT ON pglogical.subscription TO migration_admin;
+--------------------------------------------------------------------------------
+
+Step 18 --> once it is done, copy this and paste there and hit enter
+--------------------------------------------------------------------------------
+GRANT USAGE ON SCHEMA public TO migration_admin;
+GRANT ALL ON SCHEMA public TO migration_admin;
+
+GRANT SELECT ON public.meme TO migration_admin;
+------------------------------------------------------------------------------------
+Step 19 --> once it is done, copy this and paste there and hit enter
+--------------------------------------------------------------------------------
+\c orders;
+\dt
+------------------------------------------------------------------------------------
+Step 20 --> once it is done, copy this and paste there and hit enter
+--------------------------------------------------------------------------------
+ALTER TABLE public.distribution_centers OWNER TO migration_admin;
+ALTER TABLE public.inventory_items OWNER TO migration_admin;
+ALTER TABLE public.order_items OWNER TO migration_admin;
+ALTER TABLE public.products OWNER TO migration_admin;
+ALTER TABLE public.users OWNER TO migration_admin;
+\dt
+------------------------------------------------------------------------------------
+Step 21 --> once it is done, copy this and paste there and hit enter
+--------------------------------------------------------------------------------
+\q
+
+exit
+------------------------------------------------------------------------------------
+Step 22 --> NOW GO TO BACK TO THE CONSOLE WINDOW AND THERE SLIDE RIGHT TO REVEAL THE INTERNAL IP ADDRESS --> copy it and paste it in a new tab 
+Step 23 --> NOw come back to the console and search for - Database Migration --> click on connection profiles
+Step 24 --> click on create profile --> select Postgre sql as database engine --> copy the details from the Task 2 of the lab page properly --> (in hostname, paste teh internal ip that we copied )
+Step 25 --> click on create
+Step 26 --> check the progress for this task
+Step 27 --> From the side pane, click on migration jobs --> create migration job
+Step 28 --> Type teh details form TAsk 3 from the laband clikc save and continue
+Step 29 --> select the postgre-vm and click next
+Step 30 --> Again fill teh details from the lab and click create and continue
+Step 31 --> Craete the full machine according to the lab 
+Step 32 --> 
